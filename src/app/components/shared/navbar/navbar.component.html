@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg">
+    <ul class="navbar-nav">
+        <img src="../../../../assets/destination.png" alt="">
+        <a class="navbar-brand" routerLink="/index">Agencia de Viajes</a>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/destinations" routerLinkActive="active">Destinos</a>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/accommodations" routerLinkActive="active">Alojamientos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/activities" routerLinkActive="active">Actividades</a>
+        </li> -->
+    </ul>
+    <ul class="navbar-nav">
+        <ng-container *ngIf="isUserLogged">
+            <li class="nav-item" *ngIf="!isUserAdmin">
+                <a class="nav-link" routerLink="/cart" routerLinkActive="active"><mat-icon>shopping_cart</mat-icon></a>
+            </li>
+            <li class="nav-item" *ngIf="isUserAdmin">
+                <a class="nav-link" routerLink="/admin/destinationList" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li class="nav-item" *ngIf="!isUserAdmin">
+                <a class="nav-link" routerLink="/profile" routerLinkActive="active">Perfil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="logout()" routerLink="/inicio">Cerrar Sesión</a>
+            </li>
+        </ng-container>
+        <ng-container *ngIf="!isUserLogged">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/register" routerLinkActive="active">Regístrate</a>
+            </li>
+        </ng-container>
+    </ul>
+</nav>

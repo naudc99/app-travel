@@ -1,0 +1,88 @@
+@import '../../../../../assets/variables.scss';
+
+.container {
+    /* Estilos para el contenedor del diálogo */
+    background-color: $lightblue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    /* Estilos para el título del diálogo */
+    background-color: $darkblue;
+    color: white;
+    padding: 16px;
+    font-size: 24px;
+    text-align: center;
+}
+
+mat-dialog-content {
+    /* Estilos para el contenido del diálogo */
+    padding: 16px;
+
+    .form-group {
+        margin-bottom: 20px;
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: $darkblue;
+            /* Color de etiquetas según tu paleta */
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+
+            &:focus {
+                outline: none;
+                border-color: $blue;
+                /* Color de borde al enfocar */
+            }
+        }
+    }
+}
+
+mat-dialog-actions {
+    /* Estilos para las acciones del diálogo */
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+
+    button {
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .cancel-button {
+        margin-right: 8px;
+        background-color: $yellow;
+    }
+
+    .book-button {
+        background-color: $darkblue;
+        color: white;
+        transition: background-color 0.3s, transform 0.3s;
+
+        &:hover {
+            background-color: $green;
+            color: $darkblue;
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(1);
+        }
+    }
+}
+
+small {
+    color: $darkblue;
+}

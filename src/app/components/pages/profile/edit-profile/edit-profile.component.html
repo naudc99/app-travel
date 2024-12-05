@@ -1,0 +1,26 @@
+<div class="container">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <mat-dialog-content>
+          <div class="form-group">
+            <label for="editName">Nombre de Usuario</label>
+            <input type="text" formControlName="name" id="editName">
+            <div class="error-message" *ngIf="editForm.get('name')?.invalid && editForm.get('name')?.touched">
+              Por favor ingrese un nombre válido.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="editEmail">Correo Electrónico</label>
+            <input type="email" formControlName="email" id="editEmail">
+            <div class="error-message" *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched">
+              Por favor ingrese un correo electrónico válido.
+            </div>
+          </div>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions>
+          <button type="submit" class="book-button" [disabled]="editForm.invalid">
+            Guardar Cambios
+          </button>
+        </mat-dialog-actions>
+      </form>
+</div>

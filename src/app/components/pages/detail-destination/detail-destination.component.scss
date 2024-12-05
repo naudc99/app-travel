@@ -1,0 +1,100 @@
+/* detail-flight.component.scss */
+@import '../../../../assets/variables.scss';
+
+/* Estilos para la imagen principal del vuelo */
+.img-fluid {
+  max-width: 100%;
+}
+
+/* Estilos para el formulario de selección de inicio y llegada */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilos para la sección de comentarios y valoraciones */
+.comment-list {
+  .comment {
+    margin-bottom: 20px;
+
+    .card {
+      border: 1px solid $darkblue;
+      /* Cambio de color del borde a azul oscuro */
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .card-body {
+        padding: 20px;
+
+        .comment-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .author {
+            font-weight: bold;
+          }
+
+        }
+
+        .text {
+          margin-bottom: 10px;
+        }
+
+        .rating {
+          .fa-star {
+            color: $yellow;
+            /* Color amarillo para las estrellas */
+          }
+        }
+      }
+    }
+  }
+}
+
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.cancel-button {
+  margin-right: 8px;
+  background-color: $yellow;
+}
+
+.book-button {
+  background-color: $darkblue;
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: $green;
+    color: $darkblue;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+}
+
+.delete-button {
+  background-color: $darkblue;
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: red;
+
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+}
+
+mat-icon {
+  color: $darkblue;
+}

@@ -1,0 +1,15 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 mb-4 activities" *ngFor="let activity of activities">
+        <div class="card" (click)="navigateToDetailFlight(activity.activityId)">
+          <img class="card-img-top" [src]="activity.imagen" [alt]="activity.nombre">
+          <div class="card-overlay"></div> <!-- Overlay para efecto de superposición -->
+          <div class="card-content">
+            <h5 class="card-title">{{ activity.nombre }}</h5>
+            <p class="card-text">Precio: {{ activity.precio }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

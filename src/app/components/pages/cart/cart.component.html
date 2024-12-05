@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="reservations-table" *ngIf="pendingReservation">
+      <table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Destino</th>
+            <th>País</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Acciones</th> <!-- Columna para el botón de eliminar -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img [src]="'data:image/jpeg;base64,' + pendingDestination.image" alt="Destination Image">
+            </td>
+            <td>{{ pendingDestination.name }}</td>
+            <td>{{ pendingDestination.country.name }}</td>
+            <td>{{ pendingDestination.description }}</td>
+            <td>{{ pendingDestination.price }}</td>
+            <td>
+                <button (click)="deletePendingReservation(pendingReservation.reservationId)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="reservation-details-card">
+      <div>
+        <h2>Detalles de la Reserva</h2>
+        <p>Fecha Inicial: {{ pendingReservation.initialDate | date }}</p>
+        <p>Fecha Final: {{ pendingReservation.finalDate | date }}</p>
+        <p>Pasajeros: {{ pendingReservation.passengerCount }}</p>
+        <p>Precio Total: {{ pendingReservation.price }}€</p>
+      </div>
+      <div #paymentRef></div>
+    </div>
+    <div *ngIf="!pendingReservation" class="no-reservations">
+      <h1>No hay reservas pendientes</h1>
+    </div>
+  </div>
+  
+  

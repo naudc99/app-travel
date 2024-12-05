@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 mb-4 destinations" *ngFor="let destination of destinations">
+        <div class="card" (click)="navigateToDetailFlight(destination.destinationId)">
+            <img class="card-img-top" [src]="'data:image/jpeg;base64,' + destination.image" alt="Destination Image">
+          <div class="card-overlay"></div> 
+          <div class="card-content">
+            <h5 class="card-title">{{ destination.name }}</h5>
+            <p class="card-text">Precio: {{ destination.price }}</p>
+            hola
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

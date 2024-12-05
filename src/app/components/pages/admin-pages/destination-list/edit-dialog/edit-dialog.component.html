@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 mat-dialog-title>Editar destino</h2>
+    <div mat-dialog-content>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" class="form-control" id="name" formControlName="name" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Descripción:</label>
+          <textarea class="form-control" id="description" formControlName="description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="price">Precio:</label>
+          <input type="number" class="form-control" id="price" formControlName="price" required>
+        </div>
+        <!-- <div class="form-group">
+          <label for="image">Imagen:</label>
+          <input type="file" (change)="onImageSelected($event)" accept="image/*">
+        </div> -->
+        <button type="submit" class="btn book-button" [disabled]="!editForm.valid">Guardar</button>
+      </form>
+    </div>
+  </div>
+  

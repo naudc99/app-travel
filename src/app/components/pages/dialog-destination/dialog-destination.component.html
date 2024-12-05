@@ -1,0 +1,45 @@
+<div class="container">
+    <h1 mat-dialog-title>Reservar vuelo</h1>
+    <mat-dialog-content class="mat-dialog-content custom-dialog">
+        <form [formGroup]="reservationForm">
+            <div class="form-group">
+                <label for="initialDate">Fecha de inicio:</label>
+                <input matInput formControlName="initialDate" type="date" id="initialDate">
+                <div *ngIf="reservationForm.get('initialDate')?.invalid && reservationForm.get('initialDate')?.touched">
+                    <small *ngIf="reservationForm.get('initialDate')?.errors?.['required']">La fecha de inicio es
+                        requerida.</small>
+                    <small *ngIf="reservationForm.get('initialDate')?.errors?.['invalidStartDate']">La fecha de inicio no
+                        puede ser anterior a hoy.</small>
+                    <small *ngIf="reservationForm.get('initialDate')?.errors?.['invalidMinStartDate']">La fecha de inicio debe
+                        ser como mínimo el día siguiente.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="finalDate">Fecha de llegada:</label>
+                <input matInput formControlName="finalDate" type="date" id="finalDate" [min]="reservationForm.get('initialDate')?.value">
+                <div *ngIf="reservationForm.get('finalDate')?.invalid && reservationForm.get('finalDate')?.touched">
+                    <small *ngIf="reservationForm.get('finalDate')?.errors?.['required']">La fecha de llegada es
+                        requerida.</small>
+                    <small *ngIf="reservationForm.get('finalDate')?.errors?.['invalidEndDate']">La fecha de llegada no puede
+                        ser igual o anterior a la fecha de inicio.</small>
+                    <small *ngIf="reservationForm.get('finalDate')?.errors?.['invalidMinEndDate']">La fecha de llegada debe
+                        ser como mínimo el día siguiente de la fecha de inicio.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passengerCount">Número de pasajeros:</label>
+                <input matInput formControlName="passengerCount" type="number" id="passengerCount" min="1">
+                <div *ngIf="reservationForm.get('passengerCount')?.invalid && reservationForm.get('passengerCount')?.touched">
+                    <small *ngIf="reservationForm.get('passengerCount')?.errors?.['required']">El número de pasajeros es
+                        requerido.</small>
+                    <small *ngIf="reservationForm.get('passengerCount')?.errors?.['min']">El número de pasajeros debe ser al
+                        menos 1.</small>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button class="cancel-button" (click)="onCancelClick()">Cancelar</button>
+        <button mat-button color="primary" class="book-button" (click)="onBookClick()">Reservar</button>
+    </mat-dialog-actions>
+</div>

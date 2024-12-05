@@ -1,0 +1,109 @@
+// user-profile.component.scss
+@import '../../../../assets/variables.scss';
+// Colores personalizados
+$user-profile-background-color: #eddcff;
+$user-profile-border-color: #7ced89;
+$user-profile-header-color: #001d96;
+$user-profile-text-color: #333;
+$user-profile-link-color: #5f6edf;
+$user-profile-button-color: #5f6edf;
+
+.user-profile {
+    background-color: $user-profile-background-color;
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid $user-profile-border-color;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 40px;
+        color: $user-profile-header-color;
+        font-size: 36px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .profile-body {
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+
+            .profile-picture img {
+                width: 140px;
+                height: 140px;
+                border-radius: 50%;
+                margin-right: 40px;
+                border: 4px solid #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .user-details {
+                flex-grow: 1;
+
+                h2 {
+                    margin-top: 0;
+                    color: $user-profile-text-color;
+                    font-size: 32px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                }
+
+                p {
+                    color: $user-profile-text-color;
+                    font-size: 18px;
+                    margin-bottom: 10px;
+                }
+
+                button {
+                    border: none;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+            
+                .cancel-button {
+                    margin-right: 8px;
+                    background-color: $yellow;
+                }
+            
+                .book-button {
+                    background-color: $darkblue;
+                    color: white;
+                    transition: background-color 0.3s, transform 0.3s;
+            
+                    &:hover {
+                        background-color: $green;
+                        color: $darkblue;
+                        transform: scale(1.05);
+                    }
+            
+                    &:active {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
+        .booking-history, .preferences {
+            margin-bottom: 40px;
+
+            h2 {
+                color: $user-profile-header-color;
+                font-size: 28px;
+                font-weight: bold;
+                margin-bottom: 30px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            table{
+                border-radius: 10px;
+            }
+
+           
+        }
+    }
+}
+

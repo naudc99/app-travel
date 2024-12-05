@@ -1,0 +1,27 @@
+<h2 class="text-center mt-3">Lista de destinos</h2>
+
+<table class="custom-table">
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>País</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let destination of destinations">
+      <td><img [src]="'data:image/jpeg;base64,' + destination.image" alt="Destination Image" style="max-width: 50px; max-height: 50px;"></td>
+      <td>{{ destination.name }}</td>
+      <td>{{ destination.country.name }}</td>
+      <td>{{ destination.price }}</td>
+      <td>
+        <button class="btn book-button" (click)="openEditDialog(destination)"> Editar
+        </button>
+        <button class="btn  cancel-button" (click)="openDeleteConfirmationDialog(destination)"> Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

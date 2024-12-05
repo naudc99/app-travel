@@ -1,0 +1,48 @@
+<div class="container mt-5" *ngIf="destination">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-fluid" [src]="'data:image/jpeg;base64,' + destination.image" alt="Destination Image">
+    </div>
+    <div class="col-md-6">
+      <h2>{{ destination.name }}</h2>
+      <p>{{ destination.description }}</p>
+      <p><strong>País:</strong> {{ destination.country.name }}</p>
+      <p><strong>Precio:</strong> {{ destination.price }}€</p>
+      <button class="btn btn-primary mb-2 book-button" (click)="openBookingDialog()" *ngIf="!userHasCommented && !hasPendingReservations()">Reservar ahora</button>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <h3>Comentarios</h3>
+      <hr>
+      <button class="btn btn-primary mb-2 book-button" (click)="openNewCommentModal()" *ngIf="!userHasCommented">Nuevo
+        comentario</button>
+      <div class="comment-list">
+        <div class="comment" *ngFor="let comment of reviews">
+          <div class="card">
+            <div class="card-body">
+              <div class="comment-header">
+                <p class="author" *ngIf="comment.userName">{{ comment.userName }}</p>
+                <p class="date">{{ comment.date | date: 'd/M/y' }}</p>
+              </div>
+              <p class="text-center">{{ comment.comment }}</p>
+              <div class="rating text-center">
+                <span *ngFor="let star of getStars(comment.rating)">
+                  <mat-icon>{{ star }}</mat-icon>
+                </span>
+              </div>
+              <div>
+                <button class="btn btn-sm btn-primary ml-2" *ngIf="currentUser && currentUser.userId === comment.userId"
+                  (click)="openEditCommentModal(comment)">Editar</button>
+                <button class="btn btn-sm btn-danger ml-2" *ngIf="currentUser && currentUser.userId === comment.userId"
+                  (click)="deleteReview(comment.userId, comment.destinationId)">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

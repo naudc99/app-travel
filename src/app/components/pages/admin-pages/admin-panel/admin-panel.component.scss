@@ -1,0 +1,22 @@
+@import '../../../../../assets/variables.scss';
+
+.container {
+    display: flex;
+    height: 80vh;
+    background-color: $lightblue;
+    margin-top: 30px;
+
+    mat-sidenav {
+        width: 250px;
+        background-color: $darkblue;
+        color: $lightblue;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .mat-sidenav-content {
+        flex: 1;
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Editar Comentario</h2>
+    <form #editForm="ngForm" (ngSubmit)="submit()" novalidate>
+        <mat-dialog-content>
+            <div class="form-group">
+                <label for="editedComment">Ingrese su comentario</label>
+                <textarea [(ngModel)]="editedReview.comment" name="editedComment" id="editedComment" required></textarea>
+                <div class="error-message" *ngIf="editForm && editForm.controls['editedComment'] && editForm.controls['editedComment'].invalid && (editForm.controls['editedComment'].dirty || editForm.controls['editedComment'].touched)">
+                    Debe escribir un comentario
+                </div>                
+            </div>
+            
+            <div class="rating-stars">
+                <span class="star" *ngFor="let star of stars" (click)="setRating($event, star)">
+                    <mat-icon *ngIf="!isSelected(star) && isHalfStar(star)" style="color: #001d96;">star_half</mat-icon>
+                    <mat-icon *ngIf="isSelected(star) && !isHalfStar(star)" style="color: #001d96;">star</mat-icon>
+                    <mat-icon *ngIf="!isSelected(star) && !isHalfStar(star)" style="color: #001d96;">star_border</mat-icon>
+                </span>
+            </div>
+            
+            <div class="error-message" *ngIf="editForm && editForm.controls['editedComment'] && selectedValue === 0 && (editForm.controls['editedComment'].dirty || editForm.controls['editedComment'].touched)">
+                Debe seleccionar una valoración.
+            </div>
+            
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button type="submit" [disabled]="!editForm.valid" class="book-button">Guardar Cambios</button>
+            <button type="button" (click)="close()" class="cancel-button">Cancelar</button>
+        </mat-dialog-actions>
+    </form>
+</div>
