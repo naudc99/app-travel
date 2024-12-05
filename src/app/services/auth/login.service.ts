@@ -52,7 +52,7 @@ export class LoginService extends ErrorHandlerService {
     getAllUserNames(): Observable<string[]> {
         try {
             const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-            return this.http.get<string[]>(`${environment.apiUrl}auth/names`, { headers }).pipe(
+            return this.http.get<string[]>(`${environment.apiUrl}/auth/names`, { headers }).pipe(
                 catchError(error => this.errorHandle(error, 'Usuario'))
             );
         } catch {
@@ -62,7 +62,7 @@ export class LoginService extends ErrorHandlerService {
 
     login(credentials: LoginRequest): Observable<any> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.http.post<any>(`${environment.apiUrl}auth/login`, credentials, { headers }).pipe(
+        return this.http.post<any>(`${environment.apiUrl}/auth/login`, credentials, { headers }).pipe(
             switchMap((response: any) => {
                 if (response.jwt === '') {
                     return throwError(() => new Error('Inicio de sesión inválido'));
@@ -110,7 +110,7 @@ export class LoginService extends ErrorHandlerService {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${this.token}`
             });
-            return this.http.get<User>(`${environment.apiUrl}user/${userId}`, { headers }).pipe(
+            return this.http.get<User>(`${environment.apiUrl}/user/${userId}`, { headers }).pipe(
                 catchError(error => this.errorHandle(error, 'Usuario')),
             );
         } catch {

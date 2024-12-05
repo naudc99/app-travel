@@ -17,7 +17,7 @@ export class RegisterService extends ErrorHandlerService {
 
     register(credentials: RegisterRequest): Observable<response> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        var response = this.http.post<response>(`${environment.apiUrl}auth/register`, credentials, { headers }).pipe(
+        var response = this.http.post<response>(`${environment.apiUrl}/auth/register`, credentials, { headers }).pipe(
             tap((response: response) => {
                 if (response && response.numberOfErrors > 0)
                     throwError(() => new Error(response.messages.join('\n')));
@@ -33,7 +33,7 @@ export class RegisterService extends ErrorHandlerService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         });
-        return this.http.post<response>(`${environment.apiUrl}auth/registeradmin`, credentials, { headers }).pipe(
+        return this.http.post<response>(`${environment.apiUrl}/auth/registeradmin`, credentials, { headers }).pipe(
             tap((response: response) => {
                 if (response && response.numberOfErrors > 0)
                     throwError(() => new Error(response.messages.join('\n')));

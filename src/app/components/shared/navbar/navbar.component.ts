@@ -15,6 +15,7 @@ import { MatIcon } from '@angular/material/icon';
 export class NavbarComponent implements OnInit {
   isUserLogged: Boolean = false;
   isUserAdmin: boolean = false;
+  isMenuOpen: boolean = false;
   userData!: User;
 
   constructor(private loginSrv: LoginService) { }
@@ -31,8 +32,12 @@ export class NavbarComponent implements OnInit {
         event.target.src = 'assets/media/img/error.png';
     }
 
-
     logout(): void {
         this.loginSrv.logout();
+        this.isMenuOpen=false;
+    }
+
+    toggleMenu(): void {
+        this.isMenuOpen = !this.isMenuOpen;
     }
 }

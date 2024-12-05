@@ -29,11 +29,12 @@ export class ReservationService {
 
   getAllReservationsByUserId(userId: number): Observable<Reservation[]> {
     const url = `${this.apiUrl}/${userId}/user`;
-    return this.http.get<Reservation[]>(url)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.get<Reservation[]>(url).pipe(
+      map(reservations => reservations || []), // Asegura que nunca se devuelva null
+      catchError(this.handleError)
+    );
   }
+  
 
   updateReservationStatusToPaid(reservationId: number): Observable<Reservation> {
     const url = `${this.apiUrl}/${reservationId}/status`;

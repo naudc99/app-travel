@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(id:number):Observable<User>{
-    return this.http.get<User>(environment.apiUrl+"user/"+id).pipe(
+    return this.http.get<User>(environment.apiUrl+"/user/"+id).pipe(
       catchError(this.handleError)
     )
   }

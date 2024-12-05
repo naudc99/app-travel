@@ -1,5 +1,5 @@
-// user-profile.component.scss
 @import '../../../../assets/variables.scss';
+
 // Colores personalizados
 $user-profile-background-color: #eddcff;
 $user-profile-border-color: #7ced89;
@@ -10,16 +10,16 @@ $user-profile-button-color: #5f6edf;
 
 .user-profile {
     background-color: $user-profile-background-color;
-    padding: 40px;
+    padding: 20px;
     border-radius: 20px;
     border: 2px solid $user-profile-border-color;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
     .profile-header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         color: $user-profile-header-color;
-        font-size: 36px;
+        font-size: 24px;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -28,44 +28,41 @@ $user-profile-button-color: #5f6edf;
     .profile-body {
         .user-info {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
 
             .profile-picture img {
-                width: 140px;
-                height: 140px;
+                width: 120px;
+                height: 120px;
                 border-radius: 50%;
-                margin-right: 40px;
+                margin-bottom: 20px;
                 border: 4px solid #fff;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             }
 
             .user-details {
-                flex-grow: 1;
+                text-align: center;
 
                 h2 {
                     margin-top: 0;
                     color: $user-profile-text-color;
-                    font-size: 32px;
+                    font-size: 24px;
                     font-weight: bold;
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
                 }
 
                 p {
                     color: $user-profile-text-color;
-                    font-size: 18px;
+                    font-size: 16px;
                     margin-bottom: 10px;
                 }
 
                 button {
                     border: none;
-                    padding: 10px;
+                    padding: 10px 20px;
                     border-radius: 10px;
-                }
-            
-                .cancel-button {
-                    margin-right: 8px;
-                    background-color: $yellow;
+                    font-size: 16px;
                 }
             
                 .book-button {
@@ -86,23 +83,89 @@ $user-profile-button-color: #5f6edf;
             }
         }
 
-        .booking-history, .preferences {
-            margin-bottom: 40px;
+        .booking-history {
+            margin-bottom: 20px;
 
             h2 {
                 color: $user-profile-header-color;
-                font-size: 28px;
+                font-size: 20px;
                 font-weight: bold;
-                margin-bottom: 30px;
+                margin-bottom: 15px;
                 text-transform: uppercase;
                 letter-spacing: 1px;
             }
 
-            table{
-                border-radius: 10px;
+            .table-responsive {
+                overflow-x: auto;
             }
 
-           
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border-radius: 10px;
+                overflow: hidden;
+
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                th {
+                    background-color: $darkblue;
+                    color: white;
+                }
+
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .user-profile {
+        padding: 40px;
+
+        .profile-header {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .profile-body {
+            .user-info {
+                flex-direction: row;
+                align-items: flex-start;
+                margin-bottom: 40px;
+
+                .profile-picture img {
+                    width: 140px;
+                    height: 140px;
+                    margin-right: 40px;
+                    margin-bottom: 0;
+                }
+
+                .user-details {
+                    text-align: left;
+
+                    h2 {
+                        font-size: 32px;
+                        margin-bottom: 20px;
+                    }
+
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .booking-history {
+                h2 {
+                    font-size: 28px;
+                    margin-bottom: 30px;
+                }
+            }
         }
     }
 }

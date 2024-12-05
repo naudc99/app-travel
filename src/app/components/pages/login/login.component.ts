@@ -6,11 +6,12 @@ import { LoginService } from '../../../services/auth/login.service';
 import { CommonModule } from '@angular/common';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatIcon],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -49,6 +50,10 @@ export class LoginComponent {
           this.errorPassMessage = 'La contraseña no puede quedar vacía';
       else
           this.errorPassMessage = 'Contraseña no válida';
+  }
+
+  togglePasswordVisibility() {
+    this.passHide = !this.passHide;
   }
 
   doLogin() {

@@ -1,47 +1,40 @@
-<div class="container mt-5">
-  <div class="card mx-auto">
+<div class="container">
+  <div class="card">
     <div class="card-body">
       <h2 class="card-title">Registro</h2>
       <form [formGroup]="fgRegister" (ngSubmit)="doRegister()">
         <div class="form-group">
           <label for="InputUsername">Nombre de usuario</label>
-          <input formControlName="name" type="text" class="form-control" id="InputUsername">
+          <input formControlName="name" type="text" class="form-control" id="InputUsername" placeholder="Ingrese su nombre de usuario">
           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
-            <div *ngIf="name.errors?.['required']">
-              El usuario es requerido.
-            </div>
-            <div *ngIf="name.errors?.['minlength']">
-              El usuario debe tener al menos 3 caracteres.
-            </div>
+            {{ errorNameMessage }}
           </div>
         </div>
         <div class="form-group">
           <label for="InputEmail">Correo electrónico</label>
-          <input formControlName="email" type="email" class="form-control" id="InputEmail">
+          <input formControlName="email" type="email" class="form-control" id="InputEmail" placeholder="Ingrese su correo electrónico">
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
-            <div *ngIf="email.errors?.['required']">
-              El Email es requerido.
-            </div>
-            <div *ngIf="email.errors?.['email']">
-              El Email debe tener un formato válido.
-            </div>
+            {{ errorEmailMessage }}
           </div>
         </div>
         <div class="form-group">
           <label for="InputPassword">Contraseña</label>
-          <div class="input-group">
-            <input formControlName="password" type="password" class="form-control" id="InputPassword">
+          <div class="password-input">
+            <input formControlName="password" [type]="passHide ? 'password' : 'text'" class="form-control" id="InputPassword" placeholder="Ingrese su contraseña">
+            <button 
+              mat-icon-button 
+              type="button" 
+              (click)="togglePasswordVisibility()" 
+              class="toggle-password"
+            >
+              <mat-icon>{{ passHide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
           </div>
           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
-            <div *ngIf="password.errors?.['required']">
-              La contraseña es requerida.
-            </div>
-            <div *ngIf="password.errors?.['pattern']">
-              La contraseña debe tener al menos 8 caracteres, una mayúscula y un número.
-            </div>
+            {{ errorPassMessage }}
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="fgRegister.invalid">Registrarse</button>
       </form>
       <p class="mt-3 text-center">¿Ya tienes una cuenta? <a routerLink="/login">Iniciar sesión</a></p>
     </div>

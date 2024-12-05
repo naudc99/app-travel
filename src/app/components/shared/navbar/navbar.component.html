@@ -1,39 +1,48 @@
-<nav class="navbar navbar-expand-lg">
-    <ul class="navbar-nav">
-        <img src="../../../../assets/destination.png" alt="">
-        <a class="navbar-brand" routerLink="/index">Agencia de Viajes</a>
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/index">
+      <img src="../../../../assets/destination.png" alt="Logo">
+      Agencia de Viajes
+    </a>
+    <div class="navbar-mobile-actions">
+      <a *ngIf="isUserLogged && !isUserAdmin" class="nav-link mobile-cart-icon" routerLink="/cart" routerLinkActive="active">
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+      <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" [class.show]="isMenuOpen" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" routerLink="/destinations" routerLinkActive="active">Destinos</a>
+          <a class="nav-link" routerLink="/destinations" routerLinkActive="active" (click)="isMenuOpen = false">Destinos</a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/accommodations" routerLinkActive="active">Alojamientos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/activities" routerLinkActive="active">Actividades</a>
-        </li> -->
-    </ul>
-    <ul class="navbar-nav">
         <ng-container *ngIf="isUserLogged">
-            <li class="nav-item" *ngIf="!isUserAdmin">
-                <a class="nav-link" routerLink="/cart" routerLinkActive="active"><mat-icon>shopping_cart</mat-icon></a>
-            </li>
-            <li class="nav-item" *ngIf="isUserAdmin">
-                <a class="nav-link" routerLink="/admin/destinationList" routerLinkActive="active">Dashboard</a>
-            </li>
-            <li class="nav-item" *ngIf="!isUserAdmin">
-                <a class="nav-link" routerLink="/profile" routerLinkActive="active">Perfil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" (click)="logout()" routerLink="/inicio">Cerrar Sesión</a>
-            </li>
+          <li class="nav-item d-none d-lg-block" *ngIf="!isUserAdmin">
+            <a class="nav-link" routerLink="/cart" routerLinkActive="active" (click)="isMenuOpen = false">
+              <mat-icon>shopping_cart</mat-icon>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="isUserAdmin">
+            <a class="nav-link" routerLink="/admin/destinationList" routerLinkActive="active" (click)="isMenuOpen = false">Dashboard</a>
+          </li>
+          <li class="nav-item" *ngIf="!isUserAdmin">
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active" (click)="isMenuOpen = false">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout(); isMenuOpen = false">Cerrar Sesión</a>
+          </li>
         </ng-container>
         <ng-container *ngIf="!isUserLogged">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/login" routerLinkActive="active">Iniciar sesión</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/register" routerLinkActive="active">Regístrate</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active" (click)="isMenuOpen = false">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" routerLinkActive="active" (click)="isMenuOpen = false">Regístrate</a>
+          </li>
         </ng-container>
-    </ul>
+      </ul>
+    </div>
+  </div>
 </nav>
+

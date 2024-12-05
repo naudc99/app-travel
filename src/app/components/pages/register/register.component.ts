@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { merge } from 'rxjs';
 import { LoginService } from '../../../services/auth/login.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, MatIcon],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -107,6 +108,10 @@ export class RegisterComponent implements OnInit {
     else if (this.password.hasError('maxlength'))
       this.errorPassMessage = 'Contraseña demasiado larga';
     else this.errorPassMessage = 'Contraseña no válida';
+  }
+
+  togglePasswordVisibility() {
+    this.passHide = !this.passHide;
   }
 
   doRegister() {

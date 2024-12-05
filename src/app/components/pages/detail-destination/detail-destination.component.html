@@ -8,7 +8,13 @@
       <p>{{ destination.description }}</p>
       <p><strong>País:</strong> {{ destination.country.name }}</p>
       <p><strong>Precio:</strong> {{ destination.price }}€</p>
-      <button class="btn btn-primary mb-2 book-button" (click)="openBookingDialog()" *ngIf="!userHasCommented && !hasPendingReservations()">Reservar ahora</button>
+      <button 
+        class="btn btn-primary mb-2 book-button" 
+        (click)="openBookingDialog()" 
+        *ngIf="currentUser && currentUser.userId > 0 && !userHasCommented && !hasPendingReservations()">
+        Reservar ahora
+      </button>
+
     </div>
   </div>
 
@@ -16,8 +22,13 @@
     <div class="col-md-12">
       <h3>Comentarios</h3>
       <hr>
-      <button class="btn btn-primary mb-2 book-button" (click)="openNewCommentModal()" *ngIf="!userHasCommented">Nuevo
-        comentario</button>
+      <button 
+        class="btn btn-primary mb-2 book-button" 
+        (click)="openNewCommentModal()" 
+        *ngIf="currentUser && currentUser.userId > 0 && !userHasCommented">
+        Nuevo comentario
+      </button>
+
       <div class="comment-list">
         <div class="comment" *ngFor="let comment of reviews">
           <div class="card">
