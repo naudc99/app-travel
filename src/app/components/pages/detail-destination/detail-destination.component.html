@@ -1,4 +1,4 @@
-<div class="container mt-5" *ngIf="destination">
+<div class="container mt-5" *ngIf="destination; else loading">
   <div class="row">
     <div class="col-md-6">
       <img class="img-fluid" [src]="'data:image/jpeg;base64,' + destination.image" alt="Destination Image">
@@ -14,7 +14,6 @@
         *ngIf="currentUser && currentUser.userId > 0 && !userHasCommented && !hasPendingReservations()">
         Reservar ahora
       </button>
-
     </div>
   </div>
 
@@ -52,8 +51,15 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </div>
+
+<!-- Loading Spinner -->
+<ng-template #loading>
+  <div class="text-center">
+    <div class="spinner-border" role="status"></div>
+    <p>Cargando, por favor espera...</p>
+  </div>
+</ng-template>

@@ -22,6 +22,7 @@ export class CartComponent implements OnInit, AfterViewInit{
   userReservations: Reservation[] = [];
   pendingReservation!: Reservation;
   pendingDestination!: Destination;
+  isLoading: boolean = true;
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
@@ -102,6 +103,7 @@ export class CartComponent implements OnInit, AfterViewInit{
   }
 
   getPendingReservation(userId: number): void {
+    this.isLoading= true;
     this.reservationService.getAllReservationsByUserId(userId).subscribe(
       (reservations: Reservation[]) => {
         this.userReservations = reservations;
@@ -109,12 +111,14 @@ export class CartComponent implements OnInit, AfterViewInit{
         if (pendingReservation) {
           this.pendingReservation = pendingReservation;
           this.getDestinationDetails(pendingReservation.destinationId);
+          this.isLoading= false;
         }
         else
         this.router.navigateByUrl('index')
       },
       error => {
         console.error('Error al obtener las reservas pendientes:', error);
+        this.isLoading= true;
       }
     );
   }

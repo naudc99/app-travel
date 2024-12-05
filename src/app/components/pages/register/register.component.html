@@ -2,6 +2,10 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Registro</h2>
+      <div class="text-center" *ngIf="isLoading">
+        <div class="spinner-border" role="status"></div>
+        <p>Cargando, por favor espera...</p>
+      </div>
       <form [formGroup]="fgRegister" (ngSubmit)="doRegister()">
         <div class="form-group">
           <label for="InputUsername">Nombre de usuario</label>

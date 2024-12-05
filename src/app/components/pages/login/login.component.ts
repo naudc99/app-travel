@@ -18,6 +18,7 @@ import { MatIcon } from '@angular/material/icon';
 export class LoginComponent {
   isValid: boolean = false;
   passHide: boolean = true;
+  isLoading: boolean = false;
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
@@ -61,15 +62,18 @@ export class LoginComponent {
           return;
       }
       var res = false;
+      this.isLoading = true;
       this.loginSrv.login(this.fgLogin.value as LoginRequest).subscribe({
           next: () => {
               res = true;
+              this.isLoading = false;
               this.fgLogin.reset();
               this.fgLogin.markAsUntouched();
               this.router.navigateByUrl("/index");
           },
           error: () => {
               res = true;
+              this.isLoading = true;
           },
       });
   }

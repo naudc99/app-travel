@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   names: string[] = [];
   isValid: boolean = false;
   passHide: boolean = true;
+  isLoading: boolean = false;
 
   name = new FormControl('', [
     Validators.required,
@@ -120,16 +121,19 @@ export class RegisterComponent implements OnInit {
       return;
     }
     var res = false;
+    this.isLoading = true;
     this.registerSrv
       .register(this.fgRegister.value as RegisterRequest)
       .subscribe({
         next: () => {
           res = true;
+          this.isLoading = false;
           this.fgRegister.reset();
           this.router.navigateByUrl('/login');
         },
         error: (error) => {
           res = true;
+          this.isLoading = true;
         },
       });
   }

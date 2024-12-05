@@ -13,6 +13,7 @@ import { DestinationService } from '../../../services/destination/destination.se
 })
 export class DestinationsComponent implements OnInit{
   destinations: Destination[] = [];
+  isLoading: boolean = true;
   
   constructor(private router: Router, private destinationService: DestinationService) {}
 
@@ -24,9 +25,11 @@ export class DestinationsComponent implements OnInit{
     this.destinationService.getAllDestinations().subscribe(
       (destinations) => {
         this.destinations = destinations;
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching destinations:', error);
+        this.isLoading = true;
       }
     );
   }

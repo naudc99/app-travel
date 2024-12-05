@@ -2,6 +2,10 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Iniciar sesión</h2>
+      <div class="text-center" *ngIf="isLoading">
+        <div class="spinner-border" role="status"></div>
+        <p>Cargando, por favor espera...</p>
+      </div>
       <form [formGroup]="fgLogin" (ngSubmit)="doLogin()">
         <div class="form-group">
           <label for="inputEmail">Correo electrónico</label>

@@ -1,4 +1,8 @@
 <div class="container mt-5">
+  <div class="text-center" *ngIf="isLoading">
+    <div class="spinner-border" role="status"></div>
+    <p>Cargando, por favor espera...</p>
+  </div>
     <div class="row">
       <div class="col-md-4 mb-4 destinations" *ngFor="let destination of destinations">
         <div class="card" (click)="navigateToDetailFlight(destination.destinationId)">

@@ -123,3 +123,10 @@ button {
   }
 }
 
+.spinner-border {
+  color: $darkblue;
+  display: block; /* Asegura que el spinner se centre */
+  margin: 0 auto; /* Centra el spinner */
+  margin-bottom: 5px;
+}
+

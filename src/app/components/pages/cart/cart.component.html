@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="reservations-content" *ngIf="pendingReservation">
+  <div class="spinner-border" role="status" *ngIf="isLoading"></div>
+  <p *ngIf="isLoading" class="text-center">Cargando, por favor espera...</p>
+  <div class="reservations-content" *ngIf="!isLoading && pendingReservation">
     <div class="reservations-table">
       <div class="table-responsive">
         <table>
@@ -43,8 +45,7 @@
     </div>
   </div>
   
-  <div *ngIf="!pendingReservation" class="no-reservations">
+  <div *ngIf="!isLoading && !pendingReservation" class="no-reservations">
     <h1>No hay reservas pendientes</h1>
   </div>
 </div>
-

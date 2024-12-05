@@ -32,6 +32,7 @@ export class DetailDestinationComponent {
   currentUser!: User;
   userHasCommented: boolean = false;
   userReservations: Reservation[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,11 +53,13 @@ export class DetailDestinationComponent {
   }
 
   getDestination(id: number): void {
+    this.isLoading = true;
     this.destinationService.getDestinationById(id).subscribe((data: Destination) => {
       this.destination = data;
       this.loadReviews();
       this.loadReviewsByUser();
       this.loadUserReservations();
+      this.isLoading = false;
     });
   }
 
